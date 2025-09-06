@@ -1,26 +1,32 @@
 {
-  "name": "speakdeck-build",
-  "version": "0.1.0",
+  "name": "speakdeck",
+  "version": "1.0.0",
+  "description": "AI-powered presentation builder that creates narrated, visual-rich slide decks instantly",
   "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "dev": "npm run dev --workspace=apps/web",
+    "build": "npm run build --workspace=apps/web",
+    "start": "npm run start --workspace=apps/web",
+    "lint": "npm run lint --workspace=apps/web",
+    "test": "npm run test --workspace=apps/web",
+    "test:e2e": "npm run test:e2e --workspace=apps/web",
+    "seed:fallback-decks": "node scripts/seed-fallback-decks.js",
+    "setup": "npm install && npm run build --workspace=packages/shared"
   },
+  "keywords": [
+    "ai",
+    "presentations",
+    "narration",
+    "slides",
+    "hackathon"
+  ],
+  "author": "SpeakDeck Team",
+  "license": "MIT",
   "dependencies": {
-    "react": "^18",
-    "react-dom": "^18",
-    "next": "14.2.32"
-  },
-  "devDependencies": {
-    "typescript": "^5",
-    "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
-    "postcss": "^8",
-    "tailwindcss": "^3.4.1",
-    "eslint": "^8",
-    "eslint-config-next": "14.2.32"
+    "@google/genai": "^1.17.0"
   }
 }

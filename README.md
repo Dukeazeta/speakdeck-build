@@ -1,36 +1,113 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SpeakDeck 🎤
 
-## Getting Started
+**Slides that speak** - Turn any topic into a narrated, visual-rich presentation deck in seconds.
 
-First, run the development server:
+SpeakDeck is an AI-powered presentation builder that creates complete slide decks with:
+- 🤖 **AI-Generated Content**: Smart text and structure using Gemini API
+- 🎨 **Dynamic Visuals**: Custom images generated for each slide
+- 🎙️ **Voice Narration**: Professional voice synthesis with ElevenLabs API
+- ⚡ **Real-time Generation**: Complete presentations in under 60 seconds
+- 🔄 **Smart Fallbacks**: Graceful handling of API quotas with pre-generated content
+
+## 🚀 Quick Start
+
+### Prerequisites
+- Node.js 18+ 
+- npm 9+
+- Supabase project (for database and storage)
+- API keys for Gemini, Nano Banana, and ElevenLabs
+
+### Installation
+
+1. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+2. **Setup environment variables**
+   ```bash
+   cp .env.example .env.local
+   ```
+   
+   Fill in your API keys in `.env.local`:
+   ```env
+   # Supabase Configuration
+   NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+   SUPABASE_SERVICE_ROLE_KEY=your_supabase_service_role_key
+
+   # AI Service API Keys
+   GEMINI_API_KEY=your_gemini_api_key
+   NANO_BANANA_API_KEY=your_nano_banana_api_key
+   ELEVENLABS_API_KEY=your_elevenlabs_api_key
+   ```
+
+3. **Setup Supabase database**
+   
+   Run the SQL migration in your Supabase dashboard:
+   ```sql
+   -- Copy and run the contents of scripts/supabase/01-create-schema.sql
+   ```
+
+4. **Start development server**
+   ```bash
+   npm run dev
+   ```
+
+5. **Visit http://localhost:3000**
+
+## 🏗️ Architecture
+
+- **Frontend**: Next.js 14 + TypeScript + Tailwind CSS + Zustand
+- **Backend**: Next.js API Routes + Supabase (PostgreSQL + Realtime)
+- **AI Services**: Gemini + Nano Banana + ElevenLabs with fallback system
+- **Deployment**: Optimized for Vercel with global CDN
+
+## 🎯 Features
+
+### Core MVP Features
+- [x] Topic input with validation and sample suggestions
+- [x] AI-powered content generation (3-5 slides)
+- [x] Dynamic visual creation for each slide
+- [x] Voice narration synthesis
+- [x] Real-time progress tracking with live updates
+- [x] Presentation viewer with navigation controls
+- [x] Audio playback with volume control
+- [x] Fallback deck system for API limits
+- [x] Responsive design (desktop + mobile)
+- [x] Keyboard navigation (arrow keys, spacebar)
+
+### Technical Features
+- [x] TypeScript throughout with shared types
+- [x] Monorepo structure with npm workspaces
+- [x] Real-time subscriptions with Supabase
+- [x] API quota management and graceful degradation
+- [x] Retry logic with exponential backoff
+- [x] Comprehensive error handling
+
+## 🔧 Development
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# Development
+npm run dev              # Start development server
+npm run build           # Build for production
+npm run start           # Start production server
+
+# Testing
+npm run test            # Run unit tests
+npm run test:e2e        # Run end-to-end tests
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Deployment
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Vercel (Recommended)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. **Connect to Vercel**: `npm install -g vercel && vercel`
+2. **Set environment variables** in Vercel dashboard
+3. **Deploy**: `vercel --prod`
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+**SpeakDeck** - Making presentations speak since 2024 🎤✨
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Built with Next.js, Supabase, and modern AI APIs for the ultimate presentation experience.
