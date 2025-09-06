@@ -10,14 +10,12 @@ export async function GET(request: NextRequest) {
     const hasSupabaseUrl = !!process.env.NEXT_PUBLIC_SUPABASE_URL;
     const hasSupabaseKey = !!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
     const hasGeminiKey = !!process.env.GEMINI_API_KEY;
-    const hasNanoBananaKey = !!process.env.NANO_BANANA_API_KEY;
     const hasElevenLabsKey = !!process.env.ELEVENLABS_API_KEY;
     
     console.log('Environment check:', {
       hasSupabaseUrl,
       hasSupabaseKey,
       hasGeminiKey,
-      hasNanoBananaKey,
       hasElevenLabsKey,
       supabaseUrl: process.env.NEXT_PUBLIC_SUPABASE_URL?.substring(0, 20) + '...',
     });
@@ -42,7 +40,6 @@ export async function GET(request: NextRequest) {
         hasSupabaseUrl,
         hasSupabaseKey,
         hasGeminiKey,
-        hasNanoBananaKey,
         hasElevenLabsKey,
       },
       supabase: supabaseStatus,

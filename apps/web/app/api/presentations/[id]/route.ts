@@ -4,10 +4,10 @@ import { DatabaseService } from '../../../../src/services/database';
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  ctx: { params: Promise<{ id: string }> }
 ) {
   try {
-    const { id } = params;
+    const { id } = await ctx.params;
 
     if (!id) {
       return NextResponse.json(

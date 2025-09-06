@@ -1,10 +1,22 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Space_Grotesk, Spline_Sans, Noto_Sans } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({ 
+const spaceGrotesk = Space_Grotesk({ 
   subsets: ["latin"],
-  variable: "--font-inter"
+  variable: "--font-space-grotesk"
+});
+
+const splineSans = Spline_Sans({
+  subsets: ["latin"],
+  variable: "--font-spline-sans",
+  weight: ["400", "500", "700"],
+});
+
+const notoSans = Noto_Sans({
+  subsets: ["latin"],
+  variable: "--font-noto-sans",
+  weight: ["400", "500", "700"],
 });
 
 export const metadata: Metadata = {
@@ -12,7 +24,11 @@ export const metadata: Metadata = {
   description: "Create engaging presentations with AI-generated content, visuals, and narration in under 60 seconds.",
   keywords: ["AI", "presentations", "narration", "slides", "automation"],
   authors: [{ name: "SpeakDeck Team" }],
-  viewport: "width=device-width, initial-scale=1",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({
@@ -22,7 +38,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} font-sans antialiased`}>
+      <body className={`${spaceGrotesk.variable} ${splineSans.variable} ${notoSans.variable} font-space-grotesk antialiased`}>
         {children}
       </body>
     </html>

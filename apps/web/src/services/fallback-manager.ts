@@ -170,7 +170,7 @@ export class FallbackManager {
       console.log('Force fallback is enabled via environment variable');
       return {
         hasQuotaAvailable: false,
-        limitedServices: ['gemini', 'nanoBanana'],
+        limitedServices: ['gemini'],
       };
     }
     
